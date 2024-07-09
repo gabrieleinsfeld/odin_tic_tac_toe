@@ -1,14 +1,20 @@
 :root{
     --board_size:50vw;
+    --color1: #f0ece2;
+    --color2: #dfd3c3;
+    --color3: #c7b198;
+    --color4: #596e79;
 }
 
 
 .cell{
-    background-color: blue;
+    background-color: var(--color3);
+    border:none;
+    border-radius: 10px;
 }
 
 #container{
-    background-color: aqua;
+    background-color: var(--color1);
     display:grid;
     margin:auto;
     width: var(--board_size);
@@ -16,4 +22,6 @@
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
     gap: 3px;
+    border:3px solid beige;
+    border-radius: 10px;
 }

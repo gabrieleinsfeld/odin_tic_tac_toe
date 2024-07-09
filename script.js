@@ -1,4 +1,5 @@
 
+curPlayer = ""
 
 function createBoard(){
     const container = document.getElementById("container")
@@ -8,6 +9,13 @@ function createBoard(){
         const cell = document.createElement("div")
         cell.setAttribute("id", `cell${index}`)
         cell.setAttribute('class', 'cell')
+        cell.addEventListener("click", ()=>{
+            if(isMoveLegal(board, index)){
+                board[index] = curPlayer
+                cell.textContent = curPlayer
+                curPlayer = setPlayer(curPlayer)
+            }
+        })
         cell.textContent = element
         container.appendChild(cell)
     }
@@ -16,7 +24,7 @@ function createBoard(){
 
 function setPlayer(currentPlayer=""){
     let player = ""
-    if(currentPlayer != ""){
+    if(currentPlayer == ""){
         const num = Math.random()*10
         if(num > 5){
             player = "X"
@@ -40,12 +48,18 @@ function isGameOver(){
 
 }
 
-function isMoveLegal(){
+function isMoveLegal(board,index){
+    if(board[index] == ""){
+        return true
+    }else{
+        return false
+    }
 
 }
 
 function init(){
-    
+    curPlayer = setPlayer()
+    createBoard()
 }
 
-createBoard()
+init()
