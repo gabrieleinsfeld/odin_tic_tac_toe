@@ -1,0 +1,19 @@
+:root{
+    --board_size:50vw;
+}
+
+
+.cell{
+    background-color: blue;
+}
+
+#container{
+    background-color: aqua;
+    display:grid;
+    margin:auto;
+    width: var(--board_size);
+    height: var(--board_size);
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 3px;
+}
