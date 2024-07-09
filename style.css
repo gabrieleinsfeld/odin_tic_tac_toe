@@ -8,9 +8,14 @@
 
 
 .cell{
+    display: flex;
     background-color: var(--color3);
     border:none;
     border-radius: 10px;
+    font-size: 40px;
+    justify-content: center;
+    align-items: center;
+
 }
 
 #container{
