@@ -7,6 +7,29 @@
 }
 
 
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    margin: 0px;
+    background-color: var(--color4);
+}
+
+#container{
+    background-color: var(--color1);
+    display:grid;
+    
+    width: var(--board_size);
+    height: var(--board_size);
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 3px;
+    border:3px solid beige;
+    border-radius: 10px;
+}
+
 .cell{
     display: flex;
     background-color: var(--color3);
@@ -18,15 +41,31 @@
 
 }
 
-#container{
-    background-color: var(--color1);
-    display:grid;
-    margin:auto;
+#game_over{
     width: var(--board_size);
     height: var(--board_size);
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    gap: 3px;
+    position: absolute;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--color4);
     border:3px solid beige;
     border-radius: 10px;
+    opacity: 0.7;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 42px;
 }
+
+#restart{
+    background-color: var(--color3);
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+
+

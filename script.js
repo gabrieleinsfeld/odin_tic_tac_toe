@@ -1,9 +1,12 @@
 
 curPlayer = ""
 
-function createBoard(){
+function createBoard(board){
     const container = document.getElementById("container")
-    const board = {"0": "", "1": "", "2": "", "3": "","4": "", "5": "", "6": "", "7": "", "8": ""}
+    while (container.firstChild) {
+        container.removeChild(container.firstChild);
+    }
+    
     for (let index in board) {
         const element = board[index];
         const cell = document.createElement("div")
@@ -16,7 +19,7 @@ function createBoard(){
                 curPlayer = setPlayer(curPlayer)
             }
             if(isGameOver(board)){
-                console.log("Game Over")
+                gameOver()
             }
         })
         cell.textContent = element
@@ -43,17 +46,22 @@ function setPlayer(currentPlayer=""){
 }
 
 
-function makeMove(player){
-
+function gameOver(){
+    const gameOverDisplay = document.getElementById("game_over")
+    gameOverDisplay.style.display = "flex"
+    const restartBtn = document.getElementById("restart")
+    restartBtn.addEventListener("click", ()=>{
+        gameOverDisplay.style.display = "none"
+        init()
+    })
 }
+
 
 function isGameOver(board){
     for (let index = 0; index < 9; index+=3) {
         if(board[index.toString()] == board[(index+1).toString()] && board[index.toString()] == board[(index+2).toString()]){
             if (board[index.toString()] != ""){
                 return true
-            }else{
-                return false
             }
         }
         
@@ -62,8 +70,6 @@ function isGameOver(board){
         if(board[index.toString()] == board[(index+3).toString()] && board[index.toString()] == board[(index+6).toString()]){
             if (board[index.toString()] != ""){
                 return true
-            }else{
-                return false
             }
         }
         
@@ -76,10 +82,15 @@ function isGameOver(board){
         if (board["2"] != ""){
             return true
         }
-    }else{
-        return false
     }
+
+    if(Object.values(board).every(value => value !== "")){
+        return true
+    }
+    return false
 }
+
+
 
 function isMoveLegal(board,index){
     if(board[index] == ""){
@@ -91,8 +102,9 @@ function isMoveLegal(board,index){
 }
 
 function init(){
-    curPlayer = setPlayer()
-    createBoard()
+    curPlayer = setPlayer("")
+    const board = {"0": "", "1": "", "2": "", "3": "","4": "", "5": "", "6": "", "7": "", "8": ""}
+    createBoard(board)
 }
 
 init()
